@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KPI Dashboard</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<h1>KPI Dashboard</h1>
+
+<section id="kpi-summary">
+    <div class="card">MTTR: <span id="mttr">--</span></div>
+    <div class="card">MTBF: <span id="mtbf">--</span></div>
+    <div class="card">Total Downtime: <span id="downtime">--</span></div>
+    <div class="card">Preventive: <span id="preventive-ratio">--</span>%</div>
+    <div class="card">Corrective: <span id="corrective-ratio">--</span>%</div>
+</section>
+
+<section id="charts">
+    <h2>Monthly / Yearly Summary</h2>
+    <div id="chart-container">Chart akan ditampilkan di sini</div>
+</section>
+
+<script src="assets/dashboard.js"></script>
+</body>
+</html>
