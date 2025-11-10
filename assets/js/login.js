@@ -22,7 +22,7 @@ if (loginForm) {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             console.log("Login email sukses:", userCredential.user);
 
-            window.location.href = "dashboard.html"; // redirect setelah login
+            window.location.href = "kpi_dashboard.html"; // redirect setelah login
         } catch (error) {
             alert("Login gagal: " + error.message);
         }
@@ -44,7 +44,7 @@ if (googleBtn) {
             const result = await signInWithPopup(auth, provider);
             console.log("Login Google sukses:", result.user);
 
-            window.location.href = "dashboard.html";
+            window.location.href = "kpi_dashboard.html";
         } catch (error) {
             alert("Login Google gagal: " + error.message);
         }
