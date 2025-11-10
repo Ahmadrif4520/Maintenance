@@ -1,21 +1,28 @@
-document.getElementById("btnSignup").onclick = () => {
-    const fullname = document.getElementById("fullname").value;
-    const email = document.getElementById("email").value;
-    const pass = document.getElementById("password").value;
+import { auth, db } from "./firebase-config.js";
+import { createUserWithEmailAndPassword } 
+  from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+import { doc, setDoc } 
+  from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
 
-    auth.createUserWithEmailAndPassword(email, pass)
-        .then(result => {
-            const uid = result.user.uid;
+document.getElementById("signup-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-            return db.collection("users").doc(uid).set({
-                fullname: fullname,
-                email: email,
-                role: "user"
-            });
-        })
-        .then(() => {
-            alert("Pendaftaran berhasil, silakan login.");
-            window.location.href = "login.html";
-        })
-        .catch(err => alert(err.message));
-};
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+
+    // Simpan role default user
+    await setDoc(doc(db, "users", userCredential.user.uid), {
+      email: email,
+      role: "user",
+      createdAt: new Date()
+    });
+
+    alert("Akun berhasil dibuat!");
+    window.location.href = "login.html";
+  } catch (error) {
+    alert(error.message);
+  }
+});
