@@ -1,49 +1,52 @@
-const btnLogin = document.getElementById("btnLogin");
-const btnGoogle = document.getElementById("btnGoogle");
+// login.js
+import { auth } from "./firebase-config.js";
+import { 
+    signInWithEmailAndPassword, 
+    GoogleAuthProvider, 
+    signInWithPopup 
+} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
 
-btnLogin.onclick = () => {
-    const email = document.getElementById("email").value;
-    const pass = document.getElementById("password").value;
+// ==============================
+// LOGIN EMAIL & PASSWORD
+// ==============================
+const loginForm = document.getElementById("login-form");
 
-    auth.signInWithEmailAndPassword(email, pass)
-        .then(user => redirectByRole(user.user.uid))
-        .catch(err => alert(err.message));
-};
+if (loginForm) {
+    loginForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-btnGoogle.onclick = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
 
-    auth.signInWithPopup(provider)
-        .then(result => {
-            const user = result.user;
-            checkUserExistOrCreate(user);  // Buat data Firestore untuk pertama kali login Google
-        })
-        .catch(err => alert(err.message));
-};
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            console.log("Login email sukses:", userCredential.user);
 
-function checkUserExistOrCreate(user) {
-    const ref = db.collection("users").doc(user.uid);
-
-    ref.get().then(doc => {
-        if (!doc.exists) {
-            ref.set({
-                fullname: user.displayName,
-                email: user.email,
-                role: "user"
-            });
+            window.location.href = "dashboard.html"; // redirect setelah login
+        } catch (error) {
+            alert("Login gagal: " + error.message);
         }
-        redirectByRole(user.uid);
     });
 }
 
-function redirectByRole(uid) {
-    db.collection("users").doc(uid).get().then(doc => {
-        const role = doc.data().role;
 
-        if (role === "admin") {
-            window.location.href = "kpi_dashboard.html";
-        } else {
-            window.location.href = "log_laporan.html";
+
+// ==============================
+// LOGIN GOOGLE
+// ==============================
+const googleBtn = document.getElementById("google-login");
+
+if (googleBtn) {
+    googleBtn.addEventListener("click", async () => {
+        const provider = new GoogleAuthProvider();
+
+        try {
+            const result = await signInWithPopup(auth, provider);
+            console.log("Login Google sukses:", result.user);
+
+            window.location.href = "dashboard.html";
+        } catch (error) {
+            alert("Login Google gagal: " + error.message);
         }
     });
 }
