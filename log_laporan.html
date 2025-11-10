@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Log Laporan</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<h1>Log Laporan Harian</h1>
+
+<form id="form-laporan">
+    <label>ID Mesin: <input type="text" name="id_mesin"></label>
+    <label>Nama Mesin: <input type="text" name="nama_mesin"></label>
+    <label>Teknisi: <input type="text" name="teknisi"></label>
+    <label>Waktu Mulai: <input type="datetime-local" name="waktu_mulai"></label>
+    <label>Waktu Selesai: <input type="datetime-local" name="waktu_selesai"></label>
+    <label>Downtime (jam): <input type="number" name="downtime"></label>
+    <label>Type Pekerjaan:
+        <select name="type_pekerjaan">
+            <option value="preventive">Preventive</option>
+            <option value="corrective">Corrective</option>
+        </select>
+    </label>
+    <label>Deskripsi: <textarea name="deskripsi"></textarea></label>
+    <label>Status:
+        <select name="status">
+            <option value="RUN">RUN</option>
+            <option value="IDLE">IDLE</option>
+            <option value="STOP">STOP</option>
+        </select>
+    </label>
+    <button type="submit">Simpan</button>
+</form>
+
+<button id="export-xlsx">Export ke XLSX</button>
+
+<script src="assets/laporan.js"></script>
+</body>
+</html>
