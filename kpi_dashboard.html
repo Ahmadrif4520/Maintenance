@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KPI Dashboard</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<nav id="main-nav">
+  <a href="kpi_dashboard.html">Dashboard</a>
+  <a href="log_laporan.html">Laporan</a>
+  <a href="cooling_tower.html">Cooling Tower</a>
+  <a href="kompresor_unit.html">Kompresor</a>
+  <a href="material_handling.html">Material Handling</a>
+  <a href="master_mesin.html">Master Mesin</a>
+</nav>
+
+<h1>KPI Dashboard</h1>
+
+<section id="kpi-summary">
+    <div class="card">MTTR: <span id="mttr">--</span></div>
+    <div class="card">MTBF: <span id="mtbf">--</span></div>
+    <div class="card">Total Downtime: <span id="downtime">--</span></div>
+    <div class="card">Preventive: <span id="preventive-ratio">--</span>%</div>
+    <div class="card">Corrective: <span id="corrective-ratio">--</span>%</div>
+</section>
+
+<section id="charts">
+    <h2>Monthly / Yearly Summary</h2>
+    <div id="chart-container" class="card">Chart akan ditampilkan di sini</div>
+</section>
+
+<!-- Firebase -->
+<script type="module" src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
+<script type="module" src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js"></script>
+<script type="module" src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
+
+<script type="module" src="assets/js/firebase-config.js"></script>
+
+
+</body>
+</html>
