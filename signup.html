@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Signup</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="UTF-8">
+  <title>Signup</title>
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
 <div class="container">
-    <h2>DAFTAR AKUN</h2>
+  <h2>DAFTAR AKUN</h2>
 
-    <form id="signup-form">
-        <input type="text" id="fullname" placeholder="Nama lengkap">
-        <input type="email" id="email" placeholder="Email">
-        <input type="password" id="password" placeholder="Password">
+  <form id="signup-form">
+    <input type="text" id="fullname" placeholder="Nama lengkap" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button id="btnSignup" class="btn">Daftar</button>
+  </form>
 
-        <button id="btnSignup" class="btn">Daftar</button>
-    </form>
-
-    <p>Sudah punya akun? <a href="login.html">Login</a></p>
+  <p>Sudah punya akun? <a href="login.html">Login</a></p>
 </div>
 
-<!-- HANYA file JS kamu -->
 <script type="module" src="assets/js/firebase-config.js"></script>
 <script type="module" src="assets/js/signup.js"></script>
-
 </body>
 </html>
