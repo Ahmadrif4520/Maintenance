@@ -8,14 +8,21 @@
 </head>
 <body>
 
-<nav id="main-nav">
-  <a href="kpi_dashboard.html">Dashboard</a>
-  <a href="log_laporan.html">Laporan</a>
-  <a href="cooling_tower.html">Cooling Tower</a>
-  <a href="kompresor_unit.html">Kompresor</a>
-  <a href="material_handling.html">Material Handling</a>
-  <a href="master_mesin.html">Master Mesin</a>
-</nav>
+<!-- Mobile menu button -->
+<div class="menu-toggle" onclick="toggleMenu()">☰ Menu</div>
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+    <h2>Maintenance App</h2>
+    <a href="kpi_dashboard.html" class="active">KPI Dashboard</a>
+    <a href="log_laporan.html">Log Laporan</a>
+    <a href="master_mesin.html">Master Mesin</a>
+    <a href="cooling_tower.html">Cooling Tower</a>
+    <a href="kompresor_unit.html">Kompresor Unit</a>
+    <a href="material_handling.html">Material Handling</a>
+    <a href="login.html">Logout</a>
+</div>
+
 
 <h1>Cooling Tower</h1>
 
@@ -30,7 +37,11 @@
         <!-- Data cooling tower akan muncul di sini -->
     </tbody>
 </table>
-
+<script>
+function toggleMenu() {
+    document.getElementById("sidebar").classList.toggle("open");
+}
+</script>
 <!-- Firebase -->
 <script type="module" src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
 <script type="module" src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js"></script>
